@@ -1,6 +1,7 @@
 package kmap
 
 import (
+  "database/sql"
   "fmt"
   "strconv"
   "strings"
@@ -20,7 +21,7 @@ func (m Map) String(name string) string {
   }
 
   switch t := m[name].(type) {
-  case []byte:
+  case []byte, sql.RawBytes:
     return fmt.Sprintf("%s", t)
   case string:
     return t
